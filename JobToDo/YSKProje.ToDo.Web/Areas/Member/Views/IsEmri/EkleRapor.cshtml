@@ -1,0 +1,36 @@
+﻿@model RaporAddViewModel
+@{
+    ViewData["Title"] = "EkleRapor";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+    <form class="mx-auto w-75 p-3" method="post" asp-action="EkleRapor">
+        <div class="text-left lead p-3">
+            <p> <span class="text-danger">Görevin Adı : </span>@Model.Gorev.Ad</p>
+            <p> <span class="text-danger">Görevin Açıklaması : </span>@Model.Gorev.Aciklama</p>
+           <p><span class="text-danger">Aciliyet Durumu :</span>@Model.Gorev.Aciliyet.Tanim</p>
+        </div>
+
+        <input type="hidden" asp-for="@Model.GorevId" />
+        <div class="form-group">
+            <label asp-for="@Model.Tanim"></label>
+            <span asp-validation-for="@Model.Tanim" class="text-danger"></span>
+            <input asp-for="@Model.Tanim" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Detay"></label>
+            <span asp-validation-for="@Model.Detay" class="text-danger"></span>
+            <textarea asp-for="@Model.Detay" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-info"><i class="fas fa-check mr-2"></i>Kaydet</button>
+            <a asp-action="Index" class="btn btn-sm btn-warning"><i class="fas fa-chevron-circle-left m-2"></i>Vazgeç</a>
+        </div>
+
+
+    </form>
+
+@section JavaScript{ 
+    <script src="~/lib/jqueryValidate/jquery.validate.min.js"></script>
+    <script src="~/lib/jqueryUnob/jquery.validate.unobtrusive.min.js"></script>
+}
